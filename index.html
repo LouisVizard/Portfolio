@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luis Martinez Project Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudfare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudfare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
-      integrity="sha256-46qynGAkLSFpVbEbog43gvNhfrOj+BmwXdFgVK/Kvc=" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
 
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
 
@@ -15,31 +14,40 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <header>
-      <div class="logo">
-        <!-- <img src="logo.png" alt="code" class="logo__img"> Need to add img logo here -->
+    <header class="top-nav">
+      <div class="nav-container">
+        <div class="nav-logo">Luis Martinez</div>
+
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          ☰
+        </button>
+
+        <nav class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#description">Intro</a>
+          <a href="#resume">Resume</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+        </nav>
       </div>
-      <button class="nav-toggle" aria-label="toggle navigation">
-        <span class="hamburger"></span>
-      </button>
-      <nav class="nav">
-        <ul class="nav__list">
-          <li class="nav__item"><a href="#home" class="nav__link">Top</a></li>
-          <li class="nav__item"><a href="#description" class="nav__link">Intro</a></li>
-          <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-          <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
-        </ul>
-      </nav>
     </header>
 
     <!-- Introduction -->
     <section class="intro" id="home">
-      <h1 class="section__title section__title--intro">
-        Hello, my name is <strong>Luis Martinez</strong>
-      </h1>
-      <p class="section__subtitle section__subtitle--intro">Electrical and Computer Engineer</p>
-      <img src="circuit.png" alt="img1" class="intro__img"> <!-- Need to put img of cool circuit here (maybe op amp oscillator) -->
+      <div class="intro-grid">
+        <div class="intro-text">
+          <h1 class="section__title section__title--intro">
+            Hello, my name is <strong>Luis Martinez</strong>
+          </h1>
+          <p class="section__subtitle section__subtitle--intro">
+            Electrical and Computer Engineer
+          </p>
+        </div>
+
+        <img src="oscilloscope.png" alt="Oscilloscope" class="intro__img">
+      </div>
     </section>
+
 
     <!-- Short Description -->
     <section class="my-description" id="description">
@@ -80,25 +88,57 @@
       <a href="#projects" class="btn">My Projects</a>
     </section>
 
+    <!-- Resume Section -->
+    <section class="my-resume" id="resume">
+      <h2 class="section__title section__title--resume">My Resume</h2>
+      <p class="section__subtitle section__subtitle--resume">Download or view below</p>
+      
+      <div class="resume-container">
+        <div class="resume-actions">
+          <a href="Resume_2025.pdf" download class="btn">Download PDF</a>
+        </div>
+        <div class="resume-embed-wrapper">
+          <embed src="Resume_2025.pdf" type="application/pdf" class="resume-embed">
+          <p class="resume-fallback">
+            Your browser doesn't support embedded PDFs. 
+            <a href="Resume_2025.pdf" target="_blank">Click here to view the PDF</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- About Me Section -->
     <section class="about-me" id="about">
-      <h2 class="section__title section__title--about">About Me</h2>
-      <p class="section__subtitle section__subtitle--about">
-        Cornell University Senior and ECE Major
-      </p>
-
-      <div class="about-me__body">
-        <p>
-          I am currently a Senior at Cornell University with a major in Electrical
-          and Computer Engineering and a minor in Computer Science. Outside of
-          school I am a member of a project team called Cornell Nexus which is a 
-          group of students working to build an autonomous robot that will filter
-          microplastics from beaches. My interests inside ECE include DSP, audio
-          circuitry, and low-level programming.
+      <div class="about-me__inner">
+        <h2 class="section__title section__title--about">About Me</h2>
+        <p class="section__subtitle section__subtitle--about">
+          Cornell University Senior and ECE Major
         </p>
-      </div>
 
-      <img src="profile.jpg" alt="me" class="about-me__img"> <!-- put in img of yourself -->
+        <div class="about-me__body">
+          <p>
+            I graduated from Cornell University in 2022 with a B.S. in Electrical
+            and Computer Engineering. There I mostly focused on embedded systems, designs
+            with FPGA, and signal processing. During my Junior and Senior years, I was part
+            of a project team called Cornell Nexus which aimed to build an autonomos robot
+            to filter microplastics from beaches.
+          </p>
+          <p>
+            After college I worked at Raytheon Intelligence and Space in Goleta, CA as part of
+            the electrical hardware engineering team. My responsibilities initially included
+            obsolescence management, dissipation calculations, WCCA, and spice simulation. Eventually, 
+            I took charge of two PCB designs and presented them at CDR. Towards the end of my time at Raytheon, I
+            became involved with writing EW firmware using VHDL, Simulink, Matlab, and Quartus for
+            intel SoCs.
+          </p>
+          <p>
+            I now work for Space Information Laboratories as an Electrical Engineer II and do a mix of board
+            design, analysis, FMECA, test design, and simulation.
+          </p>
+        </div>
+
+        <img src="profile.jpg" alt="me" class="about-me__img"> <!-- put in img of yourself -->
+      </div>
     </section>
 
     <section class="my-projects" id="projects">
@@ -122,13 +162,13 @@
     </section>
 
     <footer class="footer">
-      <a href="mailto:lmm343@cornell.edu" class="footer__link">lmm343@cornell.edu</a>
+      <a href="mailto:lmm343@cornell.edu" class="footer__link">manilumart@gmail.com</a>
       <ul class="social-list">
         <li class="social-list__item">
-          <a class="social-list__link" href=""><i class="fab fa-linkedin"></i></a>
+          <a class="social-list__link" href="https://www.linkedin.com/in/luis-martinez-127696165"><i class="fab fa-linkedin"></i></a>
         </li>
         <li class="social-list__item">
-          <a class="social-list__link" href=""><i class="fab fa-github"></i></a>
+          <a class="social-list__link" href="https://github.com/LouisVizard"><i class="fab fa-github"></i></a>
         </li>
         <li class="social-list__item">
           <a class="social-list__link" href=""><i class="fas fa-seedling"></i></a>
