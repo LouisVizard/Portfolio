@@ -16,7 +16,7 @@
   <body>
     <header class="top-nav">
       <div class="nav-container">
-        <div class="nav-logo">Luis Martinez</div>
+        <div class="nav-logo">LM</div>
 
         <button class="nav-toggle" aria-label="Toggle navigation">
           ☰
@@ -44,7 +44,7 @@
           </p>
         </div>
 
-        <img src="oscilloscope.png" alt="Oscilloscope" class="intro__img">
+        <img src="assets/oscilloscope.png" alt="Oscilloscope" class="intro__img">
       </div>
     </section>
 
@@ -90,74 +90,129 @@
 
     <!-- Resume Section -->
     <section class="my-resume" id="resume">
-      <h2 class="section__title section__title--resume">My Resume</h2>
-      <p class="section__subtitle section__subtitle--resume">Download or view below</p>
-      
-      <div class="resume-container">
-        <div class="resume-actions">
-          <a href="Resume_2025.pdf" download class="btn">Download PDF</a>
+      <h2 class="section__title">Resume</h2>
+      <p class="section__subtitle">Download or view below</p>
+
+      <div class="resume-card">
+
+        <div class="resume-toolbar">
+          <div class="resume-buttons">
+            <a href="assets/Resume_2025.pdf" download class="resume-btn">Download PDF</a>
+          </div>
         </div>
-        <div class="resume-embed-wrapper">
-          <embed src="Resume_2025.pdf" type="application/pdf" class="resume-embed">
-          <p class="resume-fallback">
-            Your browser doesn't support embedded PDFs. 
-            <a href="Resume_2025.pdf" target="_blank">Click here to view the PDF</a>
-          </p>
+
+        <div class="resume-viewer">
+          <embed src="assets/Resume_2025.pdf" type="application/pdf">
         </div>
+
       </div>
     </section>
 
     <!-- About Me Section -->
     <section class="about-me" id="about">
-      <div class="about-me__inner">
-        <h2 class="section__title section__title--about">About Me</h2>
-        <p class="section__subtitle section__subtitle--about">
-          Cornell University Senior and ECE Major
-        </p>
+      <div class="about-grid">
 
-        <div class="about-me__body">
-          <p>
-            I graduated from Cornell University in 2022 with a B.S. in Electrical
-            and Computer Engineering. There I mostly focused on embedded systems, designs
-            with FPGA, and signal processing. During my Junior and Senior years, I was part
-            of a project team called Cornell Nexus which aimed to build an autonomos robot
-            to filter microplastics from beaches.
-          </p>
-          <p>
-            After college I worked at Raytheon Intelligence and Space in Goleta, CA as part of
-            the electrical hardware engineering team. My responsibilities initially included
-            obsolescence management, dissipation calculations, WCCA, and spice simulation. Eventually, 
-            I took charge of two PCB designs and presented them at CDR. Towards the end of my time at Raytheon, I
-            became involved with writing EW firmware using VHDL, Simulink, Matlab, and Quartus for
-            intel SoCs.
-          </p>
-          <p>
-            I now work for Space Information Laboratories as an Electrical Engineer II and do a mix of board
-            design, analysis, FMECA, test design, and simulation.
-          </p>
+        <div class="about-photo">
+          <img src="assets/profile.jpg" alt="Luis Martinez">
         </div>
 
-        <img src="profile.jpg" alt="me" class="about-me__img"> <!-- put in img of yourself -->
+        <div class="about-text">
+          <h2 class="section__title">About Me</h2>
+          <p class="section__subtitle">Electrical Engineer II</p>
+
+          <p>
+            I’m an electrical and computer engineer focused on embedded systems,
+            PCB design, and signal processing. I enjoy building hardware systems
+            end-to-end—from firmware to board layout and validation.
+          </p>
+
+          <ul class="about-highlights">
+            <li>🎓 B.S. Electrical & Computer Engineering, Cornell University (2022)</li>
+            <li>🛰 Raytheon Intelligence & Space — Electrical Hardware Engineer</li>
+            <li>🚀 Space Information Laboratories — Electrical Engineer II</li>
+            <li>🧪 Focus areas: embedded systems, DSP, FPGA, PCB design</li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
+    <!--Projects Section-->
     <section class="my-projects" id="projects">
       <h2 class="section__title section__title--work">My Projects</h2>
       <p class="section__subtitle section__subtitle--work">Finished and In Progress</p>
-
       <div class="portfolio">
-        <a href="#" class="portfolio__items">
-          <img src="quat_img.png" alt="quat" class="portfolio__img">
-        </a> <!-- End item 1 -->
-        <a href="#" class="portfolio__items">
-          <img src="h_amp.jpg" alt="headphone" class="portfolio__img">
-        </a> <!-- End item 2 -->
-        <a href="#" class="portfolio__items">
-          <img src="boids.jpg" alt="boid lab" class="portfolio__img">
-        </a> <!-- End item 3 -->
-        <a href="#" class="portfolio__items">
-          <img src="" alt="" class="portfolio__img">
-        </a> <!-- End item 4 -->
+        <a href="#" class="portfolio__item">
+          <img src="assets/quat_img.png" alt="Quaternions" class="portfolio__img">
+          <div class="portfolio__overlay">
+            <h3>Quaternion Visualizer</h3>
+            <p>3D math visualization tool</p>
+          </div>
+        </a>
+
+        <a href="project-pages/Headphone-Amp/headphone_amp.html" class="portfolio__item">
+          <img src="assets/h_amp.jpg" alt="Headphone Amp" class="portfolio__img">
+          <div class="portfolio__overlay">
+            <h3>Headphone Amplifier</h3>
+            <p>Analog audio circuit design</p>
+          </div>
+        </a>
+
+        <a href="#" class="portfolio__item">
+          <img src="assets/boids.jpg" alt="Boids" class="portfolio__img">
+          <div class="portfolio__overlay">
+            <h3>Boids Simulation</h3>
+            <p>Swarm dynamics simulation</p>
+          </div>
+        </a>
+
+        <a href="#" class="portfolio__item">
+          <img src="assets/retro_emulator.png" alt="Emulator" class="portfolio__img">
+          <div class="portfolio__overlay">
+            <h3>Retro Emulator</h3>
+            <p>Raspberry Pi CM5 Handheld Console</p>
+          </div>
+        </a>
+
+        <a href="https://people.ece.cornell.edu/land/courses/ece5760/FinalProjects/s2022/jjw254_lmm343_ag988/ece5760-gh-pages/index.html" class="portfolio__item">
+          <img src="assets/landscape.png" alt="Landscape" class="portfolio__img">
+          <div class="portfolio__overlay">
+            <h3>FFT Landscapes</h3>
+            <p>FFT Based Landscape Generation on Intel SoC</p>
+          </div>
+        </a>
+
+        <a href="#" class="portfolio__item">
+          <img src="assets/stylophone.jpg" alt="stylophone" class="portfolio__img">
+          <div class="portfolio__overlay">
+            <h3>Stylophone</h3>
+            <p>USB-C Powered Stylophone With 555 Timer</p>
+          </div>
+        </a>
+
+        <a href="#" class="portfolio__item">
+          <img src="assets/nav_pcb_3d.jpg" alt="Kalman" class="portfolio__img">
+          <div class="portfolio__overlay">
+            <h3>Kalman Filter</h3>
+            <p>Kalman Filter Using STM32F4, IMU, and GNSS Receiver</p>
+          </div>
+        </a>
+
+        <a href="project-pages/Camera/camera_module.html" class="portfolio__item">
+          <img src="assets/cam.jpg" alt="Camera" class="portfolio__img">
+          <div class="portfolio__overlay">
+            <h3>Custom Camera</h3>
+            <p>Digital Camera Made from Scratch</p>
+          </div>
+        </a>
+
+        <a href="project-pages/Whale/wale_song.html" class="portfolio__item">
+          <img src="assets/whale_song.png" alt="Whale" class="portfolio__img">
+          <div class="portfolio__overlay">
+            <h3>Whale Song Synthesis</h3>
+            <p>Whale Song Emulation in Python</p>
+          </div>
+        </a>
       </div>
     </section>
 

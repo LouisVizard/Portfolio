@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Headphone Amp — Luis Martinez</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+    <!-- Shared project page styles — reuse this for all project pages -->
+    <link rel="stylesheet" href="../../css/project_pages.css">
+    <style>
+      /* ================= PAGE-SPECIFIC OVERRIDES ================= */
+      /* Add any styles unique to this project page here.           */
+      /* project-page.css handles all shared layout and components. */
+    </style>
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <header class="top-nav">
+      <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">LM</a>
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <nav class="nav-links">
+          <a href="../../index.html#home">Home</a>
+          <a href="../../index.html#description">Skills</a>
+          <a href="../../index.html#resume">Resume</a>
+          <a href="../../index.html#about">About</a>
+          <a href="../../index.html#projects">Projects</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Back -->
+    <a href="../../index.html#projects" class="back-link">← Back to Projects</a>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="project-hero">
+      <div class="project-hero-grid">
+        <div>
+          <p class="section__subtitle">PCB Design · Analog Audio</p>
+          <h1 class="section__title">
+            Guitar Headphone Amplifier
+            <span class="status-badge status-badge--complete">
+              <span class="status-dot"></span> Complete
+            </span>
+          </h1>
+
+          <div class="project-hero__meta">
+            <span class="meta-tag">KiCAD</span>
+            <span class="meta-tag">LTSpice</span>
+            <span class="meta-tag">NE5532</span>
+            <span class="meta-tag">2-Layer PCB</span>
+            <span class="meta-tag">9V Battery</span>
+            <span class="meta-tag">Cornell 2022</span>
+          </div>
+
+          <p>
+            A compact guitar headphone amplifier designed from scratch — schematic, simulation,
+            layout, and bring-up. Plug your electric guitar in one end, a standard 4.5mm
+            headphone into the other, and dial in volume with the on-board potentiometer.
+            Powered by a single 9V battery via a DC barrel jack.
+          </p>
+
+          <div class="hero-actions">
+            <!-- UPDATE: Add a link to your GitHub repo or project files below -->
+            <a href="#" class="btn">View on GitHub</a>
+            <a href="#overview" class="btn-outline">Read More ↓</a>
+          </div>
+        </div>
+
+        <!-- UPDATE: Replace src with your best hero photo once available -->
+        <img
+          src="../../assets/raw_pcb_heaphone_amp.jpg"
+          alt="Guitar Headphone Amplifier PCB"
+          class="project-hero__img"
+        >
+      </div>
+    </section>
+
+    <!-- ===================== SPECS ===================== -->
+    <section id="overview">
+      <h2 class="section__title">Specifications</h2>
+      <p class="section__subtitle">At a Glance</p>
+      <div class="specs-grid">
+        <div class="spec-card">
+          <div class="spec-card__label">Op Amp</div>
+          <div class="spec-card__value">NE5532 × 4 (paralleled)</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">Power Supply</div>
+          <div class="spec-card__value">9V (DC barrel jack)</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">Input</div>
+          <div class="spec-card__value">Electric guitar (mono)</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">Output</div>
+          <div class="spec-card__value">4.5mm headphone jack</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">Volume Control</div>
+          <div class="spec-card__value">100kΩ potentiometer</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">PCB</div>
+          <div class="spec-card__value">2-layer, KiCAD</div>
+        </div>
+        <!-- UPDATE: Add more spec cards here as needed -->
+      </div>
+    </section>
+
+    <!-- ===================== SIGNAL CHAIN ===================== -->
+    <section>
+      <h2 class="section__title">Signal Chain</h2>
+      <p class="section__subtitle">Audio Path Overview</p>
+      <div class="signal-chain">
+        <div class="chain-block">Guitar In<br><small style="color:rgba(255,255,255,0.5)">J3</small></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-block">Input Buffer<br><small style="color:rgba(255,255,255,0.5)">U1A NE5532</small></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-block">Active Filter<br><small style="color:rgba(255,255,255,0.5)">U1B NE5532</small></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-block">4× Parallel Amp<br><small style="color:rgba(255,255,255,0.5)">U2–U3 NE5532</small></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-block">Volume Pot<br><small style="color:rgba(255,255,255,0.5)">RV1 100k</small></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-block">Headphone Out<br><small style="color:rgba(255,255,255,0.5)">J1</small></div>
+      </div>
+      <p style="font-size:0.88rem; color: rgba(255,255,255,0.5); font-family: var(--ff-secondary); margin-top: 0.5rem;">
+        Virtual ground at VCC/2 allows single-supply operation. Coupling caps block DC from headphones.
+      </p>
+    </section>
+
+    <!-- ===================== DESIGN PROCESS ===================== -->
+    <section class="narrative-section">
+      <h2 class="section__title">Design Process</h2>
+      <p class="section__subtitle">From Simulation to Board</p>
+
+      <p>
+        This project started as a way to practice playing guitar late at night without
+        bothering anyone. The requirement was simple: low noise, flat frequency response
+        across the audible band, and enough drive current to push a pair of headphones
+        to a comfortable volume.
+      </p>
+
+      <h3 style="color: var(--clr-accent); margin: 1.5rem 0 0.5rem; font-size: var(--fs-h3);">Op Amp Selection — LM358 vs NE5532</h3>
+      <p>
+        The initial design used the common LM358 dual op amp. Running LTSpice transient
+        and AC simulations quickly revealed a serious problem: the LM358 introduces
+        noticeable crossover distortion at frequencies as low as 5–10 kHz — well within
+        the audible range and far too early for an audio application. The simulated output
+        waveform showed characteristic "notching" near the zero crossing at mid-to-high audio frequencies.
+      </p>
+
+      <div class="callout">
+        <strong>Key Finding:</strong> The LM358's output stage is optimized for DC and low-frequency
+        work. Its limited slew rate and crossover distortion make it a poor choice for audio paths.
+        The pin-compatible <strong>NE5532</strong> is an industry-standard audio op amp with
+        dramatically better noise performance (5 nV/√Hz) and far higher slew rate, solving both problems.
+      </div>
+
+      <h3 style="color: var(--clr-accent); margin: 1.5rem 0 0.5rem; font-size: var(--fs-h3);">Paralleling Output Stages</h3>
+      <p>
+        Headphones present a relatively low impedance load (~32Ω typical). Rather than
+        use a discrete output buffer transistor stage, four NE5532 op amp sections
+        are wired in parallel at the output. This multiplies the available output current
+        by four while averaging out individual op amp noise — a clean way to get more drive
+        without adding complexity or BJT-related design headaches.
+      </p>
+
+      <!-- UPDATE: Add more narrative paragraphs here to describe bring-up, any issues encountered, revisions, etc. -->
+
+      <h3 style="color: var(--clr-accent); margin: 1.5rem 0 0.5rem; font-size: var(--fs-h3);">PCB Layout</h3>
+      <p>
+        The 2-layer board was laid out in KiCAD. Power and ground planes on the back copper
+        help with noise rejection. Decoupling caps are placed directly at each op amp supply pin.
+        A ferrite bead (FB1) and protection diode (D2) guard the audio output. The barrel jack,
+        potentiometer, and both audio jacks are positioned at the board edges for easy panel mounting.
+      </p>
+
+      <!-- UPDATE: Add a paragraph here about bring-up results, measurements, or lessons learned -->
+    </section>
+
+    <!-- ===================== SIMULATION RESULTS ===================== -->
+    <section>
+      <h2 class="section__title">Simulation Results</h2>
+      <p class="section__subtitle">LTSpice — LM358 vs NE5532</p>
+
+      <div class="gallery">
+        <!-- LTSpice schematic -->
+        <div class="gallery__item gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/ltspice_hamp_sch.png" alt="LTSpice simulation schematic comparing LM358 and NE5532"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: ltspice_schematic.png — add to assets/]'">
+          <div class="gallery__caption">LTSpice Schematic — LM358 opamp compare sim · Headphone_Amp.kicad_sch</div>
+        </div>
+        <!-- Waveform output -->
+        <div class="gallery__item gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/ltspice_hamp_wave.png" alt="LTSpice output waveform V(vout) showing distortion"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: ltspice_waveform.png — add to assets/]'">
+          <div class="gallery__caption">V(vout) transient — distortion visible at audio frequencies with LM358</div>
+        </div>
+        <!-- UPDATE: Add more simulation screenshots here using the same gallery__item pattern -->
+      </div>
+
+      <div class="callout" style="margin-top: 1.5rem;">
+        <strong>Result:</strong> After switching to the NE5532, the output waveform remained
+        clean and undistorted across the full 20 Hz – 20 kHz audio band.
+        <!-- UPDATE: Add measured THD or SNR numbers here if you take bench measurements -->
+      </div>
+    </section>
+
+    <!-- ===================== SCHEMATIC ===================== -->
+    <section>
+      <h2 class="section__title">Schematic</h2>
+      <p class="section__subtitle">Full Circuit Diagram</p>
+
+      <div class="gallery">
+        <div class="gallery__item gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/hamp_schematic.png" alt="Full KiCAD schematic — Headphone_Amp.kicad_sch"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: schematic_full.png — add to assets/]'">
+          <div class="gallery__caption">Headphone_Amp.kicad_sch — NE5532 based headphone amplifier</div>
+        </div>
+        <!-- UPDATE: Add detail crops of the schematic as separate gallery items if desired -->
+      </div>
+
+      <p class="section__subtitle" style="margin-top: 1.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.5);">
+        Key nets: SIG_IN → AUDIO_FILT → AUDIO_OUT · VBias sets virtual ground at VCC/2
+      </p>
+    </section>
+
+    <!-- ===================== PCB LAYOUT & 3D MODEL ===================== -->
+    <section>
+      <h2 class="section__title">PCB Layout & 3D Model</h2>
+      <p class="section__subtitle">KiCAD Design Files</p>
+
+      <div class="gallery gallery--3col">
+        <div class="gallery__item gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/hamp_pcb_layout.png" alt="KiCAD PCB layout — 2-layer board"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: pcb_layout.png — add to assets/]'">
+          <div class="gallery__caption">2-layer PCB layout — KiCAD · Red: top copper · Blue: bottom copper</div>
+        </div>
+        <div class="gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/hamp_pcb_3d.png" alt="KiCAD 3D render — top side"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: pcb_3d_front.png — add to assets/]'">
+          <div class="gallery__caption">3D render — top side · KiCAD viewer</div>
+        </div>
+        <!-- UPDATE: Add more layout/3D images here. Copy a gallery__item block and update src + caption -->
+      </div>
+    </section>
+
+    <!-- ===================== FUTURE WORK / NOTES ===================== -->
+    <section class="narrative-section">
+      <h2 class="section__title">Future Work & Notes</h2>
+      <p class="section__subtitle">What's Next</p>
+
+      <p>
+        The project is functionally finished, but there are still things I would like to measure and
+        evaluate or improve on such as:
+      </p>
+
+      <!-- Example list — update or remove as needed -->
+      <ul style="color: rgba(255,255,255,0.85); line-height: 2; font-size: 1rem; max-width: 700px; padding-left: 1.4rem;">
+        <li>Measure THD+N and SNR on bench and compare to simulation</li>
+        <li>Use baxandall volume control instead of just potentiometer</li>
+        <li>Consider adding mcu for the option to do digital processing on the guitar signal</li>
+        <li>Design a laser-cut enclosure or 3D-printed case</li>
+      </ul>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <button class="lightbox__close" onclick="closeLightbox()">✕</button>
+      <img class="lightbox__img" id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <a href="mailto:manilumart@gmail.com" class="footer__link">manilumart@gmail.com</a>
+      <ul class="social-list">
+        <li class="social-list__item">
+          <a class="social-list__link" href="https://www.linkedin.com/in/luis-martinez-127696165"><i class="fab fa-linkedin"></i></a>
+        </li>
+        <li class="social-list__item">
+          <a class="social-list__link" href="https://github.com/LouisVizard"><i class="fab fa-github"></i></a>
+        </li>
+      </ul>
+    </footer>
+
+    <script>
+      // Mobile nav toggle
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.top-nav');
+      toggle.addEventListener('click', () => nav.classList.toggle('nav-open'));
+
+      // Lightbox
+      function openLightbox(src) {
+        if (!src) return;
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox').classList.add('active');
+      }
+      function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+      }
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    </script>
+  </body>
+</html>
