@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Emulator PCB — Luis Martinez</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+    <!-- Shared project page styles — reuse this for all project pages -->
+    <link rel="stylesheet" href="../../css/project_pages.css">
+    <style>
+      /* ================= PAGE-SPECIFIC OVERRIDES ================= */
+      /* Add any styles unique to this project page here.           */
+      /* project-page.css handles all shared layout and components. */
+ 
+      /* Embedded spreadsheet */
+      .sheet-wrap {
+        margin-top: 1.5rem;
+        border: 1px solid rgba(245,187,0,0.15);
+        border-radius: 10px;
+        overflow: hidden;
+        background: #0d0d0d;
+      }
+ 
+      .sheet-wrap__toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.7rem 1.2rem;
+        background: rgba(0,0,0,0.6);
+        border-bottom: 1px solid rgba(245,187,0,0.1);
+      }
+ 
+      .sheet-wrap__title {
+        font-family: var(--ff-secondary);
+        font-size: 0.8rem;
+        color: var(--clr-accent);
+        letter-spacing: 0.5px;
+      }
+ 
+      .sheet-wrap__dots {
+        display: flex;
+        gap: 6px;
+      }
+ 
+      .sheet-wrap__dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+      }
+ 
+      .sheet-wrap__dot--red { background: #ff5f57; }
+      .sheet-wrap__dot--yel { background: #febc2e; }
+      .sheet-wrap__dot--grn { background: #28c840; }
+ 
+      /* Clip container hides Google's own header/toolbar chrome */
+      .sheet-wrap__clip {
+        height: 460px;
+        overflow: hidden;
+        position: relative;
+      }
+ 
+      /* Pull the iframe up just enough to hide Google's toolbar, no more */
+      .sheet-wrap__clip iframe {
+        width: 100%;
+        height: calc(100% + 40px);
+        margin-top: -40px;
+        border: none;
+        display: block;
+        filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.95);
+      }
+
+    </style>
+  </head>
+
+  <body>
+
+    <!-- NAVBAR -->
+    <header class="top-nav">
+      <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">LM</a>
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <nav class="nav-links">
+          <a href="../../index.html#home">Home</a>
+          <a href="../../index.html#description">Skills</a>
+          <a href="../../index.html#resume">Resume</a>
+          <a href="../../index.html#about">About</a>
+          <a href="../../index.html#projects">Projects</a>
+        </nav>
+      </div>
+    </header>
+
+    <a href="../../index.html#projects" class="back-link">← Back to Projects</a>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="project-hero">
+      <div class="project-hero-grid">
+        <div>
+          <p class="section__subtitle">Embedded Systems · PCB Design · Linux</p>
+          <h1 class="section__title">
+            Retro Emulator PCB
+            <span class="status-badge status-badge--wip">
+              <span class="status-dot"></span> In Progress
+            </span>
+          </h1>
+
+          <div class="project-hero__meta">
+            <span class="meta-tag">STM32F4</span>
+            <span class="meta-tag">HDMI</span>
+            <span class="meta-tag">USB-C</span>
+            <span class="meta-tag">Raspberry Pi CM5</span>
+            <span class="meta-tag">6-Layer PCB</span>
+            <span class="meta-tag">Digital Audio</span>
+          </div>
+
+          <p>
+            A custom 6-layer retro gaming emulator board integrating a Raspberry Pi CM5, 
+            STM32F4CEU6 microcontroller implementing a USB HID controller, audio circuitry,
+            HDMI display driver, SD card, and USB-C LiPo battery charging. This board is the
+            core of what will become a fully functional retro gaming emulator running RetroPi
+            on top of Raspberry Pi OS. 
+            <br><br>
+            I don't do a lot of gaming myself, but this was initially
+            intended to be a much simpler Christmas gift for someone. I got a little carried away
+            and ended up doing more from-scratch development than I had initiall intended!
+            <br><br>
+            The project is currently in the routing phase. I have completed the schematic,
+            BOM, stackup definition, and preliminary layout. Come back later to see updates
+            on the progress of development.
+          </p>
+
+          <div class="hero-actions">
+            <!-- UPDATE: Add a GitHub or project files link -->
+            <a href="#" class="btn">View on GitHub</a>
+            <a href="#overview" class="btn-outline">Read More ↓</a>
+          </div>
+        </div>
+
+        <!-- UPDATE: Replace src with your best photo of the board -->
+        <img
+          src="../../assets/retro_3d_iso.jpg"
+          alt="Retro Emulator PCB"
+          class="project-hero__img"
+        >
+      </div>
+    </section>
+
+    <!-- ===================== SPECS ===================== -->
+    <section id="overview">
+      <h2 class="section__title">Specifications</h2>
+      <p class="section__subtitle">At a Glance</p>
+
+      <div class="specs-grid">
+        <div class="spec-card">
+          <div class="spec-card__label">MCU</div>
+          <div class="spec-card__value">STM32F4CEU6</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">Microcomputer</div>
+          <div class="spec-card__value">Raspberry Pi CM5</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">Display</div>
+          <div class="spec-card__value">HDMI LCD TFT display driver</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">Audio</div>
+          <div class="spec-card__value">Filtered and amplifed audio</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">Power</div>
+          <div class="spec-card__value">LiPo + USB-C Charging</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">PCB</div>
+          <div class="spec-card__value">6-layer, impedance controlled</div>
+        </div>
+        <!-- UPDATE: Add more spec cards here as needed -->
+      </div>
+    </section>
+
+    <!-- ===================== SYSTEM ARCHITECTURE ===================== -->
+    <section>
+      <h2 class="section__title">System Architecture</h2>
+      <p class="section__subtitle">Data Flow</p>
+
+      <div class="signal-chain">
+        <div class="chain-block">GNSS<br><small>NEO-M9N</small></div>
+        <span class="chain-arrow">+</span>
+        <div class="chain-block">IMU<br><small>9DOF</small></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-block">STM32F4<br><small>Sensor Fusion</small></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-block">nRF24L01<br><small>RF Link</small></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-block">Host PC<br><small>Python Viz</small></div>
+      </div>
+
+      <div class="callout">
+        <strong>Goal:</strong> Fuse absolute positioning (GNSS) with high-rate inertial data
+        (IMU) using a Kalman filter to estimate real-time orientation and motion, then stream
+        state estimates wirelessly to a host computer for visualization.
+      </div>
+    </section>
+
+    <!-- ===================== DESIGN OVERVIEW ===================== -->
+    <section class="narrative-section">
+      <h2 class="section__title">Design Overview</h2>
+      <p class="section__subtitle">Hardware + Firmware</p>
+
+      <p>
+        This board was designed as a dedicated navigation and state estimation platform.
+        The hardware is complete and functional, integrating all sensing, processing, and
+        communication subsystems onto a single PCB.
+      </p>
+
+      <h3>Hardware Integration</h3>
+      <p>
+        The design centers around the STM32F4 MCU, which interfaces with the NEO-M9N GNSS
+        receiver over UART for global positioning, and a 9DOF IMU over SPI/I2C for
+        high-rate motion sensing. The nRF24L01 provides a low-latency 2.4 GHz RF link to
+        stream processed state estimates to an external computer.
+      </p>
+
+      <h3>Power System</h3>
+      <p>
+        The board is powered by a single-cell LiPo battery with onboard USB-C charging
+        circuitry. Independent regulation stages supply stable rails for the RF front-end,
+        digital logic, and analog sensing paths, minimising noise coupling into sensitive
+        IMU measurements.
+      </p>
+
+      <h3>PCB Stackup</h3>
+      <p>
+        A 6-layer stackup was chosen to provide controlled impedance for RF and GNSS
+        antenna traces, solid ground referencing across all layers, and clean power
+        distribution. Dedicated power and ground planes minimise EMI and improve signal
+        integrity throughout.
+      </p>
+
+      <!-- UPDATE: Add more narrative here — bring-up notes, any issues, revisions, etc. -->
+    </section>
+
+    <!-- ===================== SCHEMATIC ===================== -->
+    <section>
+        <h2 class="section__title">Schematic</h2>
+        <p class="section__subtitle">Full Circuit Diagram</p>
+
+        <div class="gallery">
+            <div class="gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="../../assets/retro_sch_top.jpg" alt="Retro PCB Sch Top"
+                    onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: retro_sch_top.jpg — add to assets/]'">
+            <div class="gallery__caption">Schematic - Top</div>
+            </div>
+
+            <div class="gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="../../assets/retro_sch_pwr.jpg" alt="Retro PCB Sch PWR"
+                    onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: retro_sch_pwr.jpg — add to assets/]'">
+            <div class="gallery__caption">Schematic - Power</div>
+            </div>
+
+            <div class="gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="../../assets/retro_sch_audio.jpg" alt="Retro PCB Sch Audio"
+                    onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: retro_sch_audio.jpg — add to assets/]'">
+            <div class="gallery__caption">Schematic - Audio</div>
+            </div>
+
+            <div class="gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="../../assets/retro_sch_ctrl.jpg" alt="Retro PCB Sch CTRL"
+                    onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: retro_sch_ctrl.jpg — add to assets/]'">
+            <div class="gallery__caption">Schematic - Controls</div>
+            </div>
+
+            <div class="gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+            <img src="../../assets/retro_sch_disp.jpg" alt="Retro PCB Sch Display"
+                    onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: retro_sch_disp.jpg — add to assets/]'">
+            <div class="gallery__caption">Schematic - Display</div>
+            </div>
+        </div>
+
+        <p class="section__subtitle" style="margin-top: 1.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.5);">
+        RF, digital, and power sections are grouped accordingly. Separate power supply for RF components for
+        better isolation form noise.
+        </p>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section>
+      <h2 class="section__title">PCB Layout &amp; 3D Model</h2>
+      <p class="section__subtitle">KiCAD Design Files</p>
+
+      <div class="gallery">
+        <!-- UPDATE: Fill in src paths and captions for your actual layout / 3D screenshots -->
+        <div class="gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/retro_layout.jpg" alt="Retro Emulator Prelim Layout — top"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: retro_layout.jpg — add to assets/]'">
+          <div class="gallery__caption">PCB Layout (Preliminary) - 6 Layer Stackup</div>
+        </div>
+        <div class="gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/retro_3d_top.jpg" alt="Navigation Board 3D render — isometric"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: retro_3d_top.jpg — add to assets/]'">
+          <div class="gallery__caption">3D render (Top)</div>
+        </div>
+        <div class="gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/retro_3d_bot.jpg" alt="Navigation Board 3D render bottom — isometric"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: retro_3d_bot.jpg — add to assets/]'">
+          <div class="gallery__caption">3D render (Bottom)</div>
+        </div>
+        <!-- UPDATE: Add more gallery items here — schematic screenshots, real board photos, etc. -->
+      </div>
+    </section>
+
+    <!-- ===================== PCB STACKUP ===================== -->
+    <section>
+      <h2 class="section__title">PCB Stackup</h2>
+      <p class="section__subtitle">Layer Details — Design Spreadsheet</p>
+ 
+      <!-- UPDATE: Replace the spreadsheet URL with your own Google Sheet /preview link -->
+      <div class="sheet-wrap">
+        <div class="sheet-wrap__toolbar">
+          <div class="sheet-wrap__dots">
+            <div class="sheet-wrap__dot sheet-wrap__dot--red"></div>
+            <div class="sheet-wrap__dot sheet-wrap__dot--yel"></div>
+            <div class="sheet-wrap__dot sheet-wrap__dot--grn"></div>
+          </div>
+          <div class="sheet-wrap__title">retro_emulator_stackup.xlsx</div>
+          <div style="font-family:var(--ff-secondary);font-size:0.72rem;color:rgba(255,255,255,0.35);">Google Sheets</div>
+        </div>
+        <div class="sheet-wrap__clip">
+          <iframe
+            src="https://docs.google.com/spreadsheets/d/1y8UFBo5hvFj5DNxBOYgQXF0sVpvpMorS/preview"
+            title="PCB Stackup Spreadsheet">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===================== FUTURE WORK ===================== -->
+    <section class="narrative-section">
+      <h2 class="section__title">Next Steps</h2>
+      <p class="section__subtitle">Routing</p>
+
+      <p>
+        The preliminary layout of the board is complete. Next I will focus on:
+      </p>
+
+      <ul>
+        <li>Routing all components on the PCB</li>
+        <li>Initial assembly and bringup of the PCB</li>
+        <li>Make any necessary modifications to the design</li>
+        <li>Button/joystick ribbon cable designs</li>
+        <li>Create 3D enclosure</li>
+        <!-- UPDATE: Add your own items here as work progresses -->
+      </ul>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <button class="lightbox__close" onclick="closeLightbox()">✕</button>
+      <img class="lightbox__img" id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <a href="mailto:manilumart@gmail.com" class="footer__link">manilumart@gmail.com</a>
+      <ul class="social-list">
+        <li class="social-list__item">
+          <a class="social-list__link" href="https://www.linkedin.com/in/luis-martinez-127696165"><i class="fab fa-linkedin"></i></a>
+        </li>
+        <li class="social-list__item">
+          <a class="social-list__link" href="https://github.com/LouisVizard"><i class="fab fa-github"></i></a>
+        </li>
+      </ul>
+    </footer>
+
+    <script>
+      // Mobile nav toggle
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.top-nav');
+      toggle.addEventListener('click', () => nav.classList.toggle('nav-open'));
+
+      // Lightbox
+      function openLightbox(src) {
+        if (!src) return;
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox').classList.add('active');
+      }
+      function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+      }
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    </script>
+
+  </body>
+</html>

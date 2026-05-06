@@ -421,14 +421,14 @@
         You can swap it for a regular <img src="../assets/whale_output.png"> once you add the file.
       -->
       <div class="gallery">
-        <div class="gallery__item gallery__item--wide">
+        <div class="gallery__item gallery__item" onclick="openLightbox(this.querySelector('img').src)">
           <!-- Placeholder — the notebook output image -->
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
+          <img src="../../assets/whale_song.png"
                alt="Whale Song Waveform and Spectrogram — replace with actual notebook output"
-               style="height:200px; object-fit:contain; background:#0a0a0a; opacity:0.4;"
-               onerror="this.style.opacity='0.2'">
+               onerror="this.style.opacity='0.2'"
+               class="project-hero__img">
           <div class="gallery__caption">
-            [UPDATE: Replace with screenshot of notebook output — single pulse, full waveform, spectrogram]
+            Notebook output — single pulse, full waveform, spectrogram
           </div>
         </div>
       </div>

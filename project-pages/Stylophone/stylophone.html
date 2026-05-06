@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylophone — Luis Martinez</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans+Pro:300,900&display=swap" rel="stylesheet">
+    <!-- Shared project page styles — reuse this for all project pages -->
+    <link rel="stylesheet" href="../../css/project_pages.css">
+    <style>
+      /* ================= PAGE-SPECIFIC OVERRIDES ================= */
+      /* Add any styles unique to this project page here.           */
+      /* project-page.css handles all shared layout and components. */
+    </style>
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <header class="top-nav">
+      <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">LM</a>
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <nav class="nav-links">
+          <a href="../../index.html#home">Home</a>
+          <a href="../../index.html#description">Skills</a>
+          <a href="../../index.html#resume">Resume</a>
+          <a href="../../index.html#about">About</a>
+          <a href="../../index.html#projects">Projects</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Back -->
+    <a href="../../index.html#projects" class="back-link">← Back to Projects</a>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="project-hero">
+      <div class="project-hero-grid">
+        <div>
+          <p class="section__subtitle">PCB Design · Analog Audio</p>
+          <h1 class="section__title">
+            555 Timer Stylophone
+            <span class="status-badge status-badge--complete">
+              <span class="status-dot"></span> Complete
+            </span>
+          </h1>
+
+          <div class="project-hero__meta">
+            <span class="meta-tag">KiCAD</span>
+            <span class="meta-tag">LTSpice</span>
+            <span class="meta-tag">LM386</span>
+            <span class="meta-tag">2-Layer PCB</span>
+            <span class="meta-tag">USB-C Power</span>
+            <span class="meta-tag">Cornell 2022</span>
+          </div>
+
+          <p>
+            In this project I designed a stylophone as a Christmas present for my girlfriend. It
+            was one of the first PCBAs that I designed, so there are a plethora of mistakes that
+            I made which I would love to fix in a later revision. This board is a 2-layer PCB that
+            centers around the classic 555-timer and LM386 audio amplifier. A baxandall volume circuit
+            was used instead of a standard potentiometer for volume control. In addition, I added a
+            small 1W speaker output which is enough to hear well in a quiet room.
+          </p>
+
+          <div class="hero-actions">
+            <!-- UPDATE: Add a link to your GitHub repo or project files below -->
+            <a href="#" class="btn">View on GitHub</a>
+            <a href="#overview" class="btn-outline">Read More ↓</a>
+          </div>
+        </div>
+
+        <!-- UPDATE: Replace src with your best hero photo once available -->
+        <img
+          src="../../assets/stylophone.jpg"
+          alt="Stylophone PCB"
+          class="project-hero__img"
+        >
+      </div>
+    </section>
+
+    <!-- ===================== SPECS ===================== -->
+    <section id="overview">
+      <h2 class="section__title">Specifications</h2>
+      <p class="section__subtitle">At a Glance</p>
+      <div class="specs-grid">
+        <div class="spec-card">
+          <div class="spec-card__label">Audio Amp</div>
+          <div class="spec-card__value">LM386</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">Power Supply</div>
+          <div class="spec-card__value">USB-C Powered</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">Input</div>
+          <div class="spec-card__value">Frequency set by keys and 555 timer IC</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">Output</div>
+          <div class="spec-card__value">1W Speaker</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">Volume Control</div>
+          <div class="spec-card__value">Baxandall Volume Circuit</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-card__label">PCB</div>
+          <div class="spec-card__value">2-layer, KiCAD</div>
+        </div>
+        <!-- UPDATE: Add more spec cards here as needed -->
+      </div>
+    </section>
+
+    <!-- ===================== SIGNAL CHAIN ===================== -->
+    <section>
+      <h2 class="section__title">Signal Chain</h2>
+      <p class="section__subtitle">Audio Path Overview</p>
+      <div class="signal-chain">
+        <div class="chain-block">Resistor Divider<br><small style="color:rgba(255,255,255,0.5)">J2, R9-29</small></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-block">555 Timer Freq Set<br><small style="color:rgba(255,255,255,0.5)">555 Timer</small></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-block">Baxandall Voluem Ctrl<br><small style="color:rgba(255,255,255,0.5)">IC1 TLV9362</small></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-block">Audio Amp<br><small style="color:rgba(255,255,255,0.5)">U1 LM386</small></div>
+        <span class="chain-arrow">→</span>
+        <div class="chain-block">1W speaker<br><small style="color:rgba(255,255,255,0.5)">LS1</small></div>
+      </div>
+      <p style="font-size:0.88rem; color: rgba(255,255,255,0.5); font-family: var(--ff-secondary); margin-top: 0.5rem;">
+        Virtual ground at VCC/2 allows single-supply operation. Coupling cap blocks DC from speaker.
+      </p>
+    </section>
+
+    <!-- ===================== DESIGN PROCESS ===================== -->
+    <section class="narrative-section">
+      <h2 class="section__title">Design Process</h2>
+      <p class="section__subtitle">From Simulation to Board</p>
+
+      <p>
+        This project started because I wanted to build something for my girlfriend for
+        Christmas. She plays piano, so I thought this would be perfect for her. I did
+        some research and found an instructables page <a href="https://www.instructables.com/A-Stylophone/" class="links">here</a>
+        that I pulled heavily from for the schematic design.
+      </p>
+
+      <h3 style="color: var(--clr-accent); margin: 1.5rem 0 0.5rem; font-size: var(--fs-h3);">Core Operation</h3>
+      <p>
+        The idea behind the core functionality is that the keys are connected to a resistor on the PCB. When the stylus presses
+        on a key, it completes a circuit and forms a voltage divider with R6 and R7. That voltage changes based on what key you 
+        press, and the voltage sets the output frequency from the 555 timer. Therefore, by carefully choosing the values of your 
+        resistors, you can output the necessary frequencies for piano notes. I did an initial simulation in LTSpice to verify
+        that the circuit functioned as expected before moving on to KiCAD.
+      </p>
+
+      <div class="callout">
+        <strong>Key Finding:</strong> For high quality audio, the 555 timer is not the best choice for a
+        VCO. It is relatively noisy, and can produce high distortion waveforms. Also it only outputs a
+        square wave, so additional waveforming would need to be done to get different timbres. However,
+        for this low fidelity application where we just want a buzzing sound at the right frequencies,
+        it is more than good enough.
+      </div>
+
+      <h3 style="color: var(--clr-accent); margin: 1.5rem 0 0.5rem; font-size: var(--fs-h3);">Baxandall Volume Control</h3>
+      <p>
+        Baxandall volume control involves adding in two op amps to the standard potentiometer used to decrease
+        the volume. The high impedance input buffer and inverting output amplifier does two main things: it gives
+        a linear potentiometer a logarithmic volume response which is better for human hearing, and the transfer 
+        function is not a function of the pot track resistance or any other discrete resistances.
+      </p>
+
+      <!-- UPDATE: Add more narrative paragraphs here to describe bring-up, any issues encountered, revisions, etc. -->
+
+      <h3 style="color: var(--clr-accent); margin: 1.5rem 0 0.5rem; font-size: var(--fs-h3);">Output Stage</h3>
+      <p>
+        The output stage includes an LM386 audio amplifier and a 1W speaker. The LM386 was chosen because a single ic
+        can supply enough current on the output to drive the 1W speaker, and it is relatively simple to set up, requiring
+        only a few peripheral components such as decoupling and input/output capacitors to block DC.
+      </p>
+
+      <h3 style="color: var(--clr-accent); margin: 1.5rem 0 0.5rem; font-size: var(--fs-h3);">PCB Layout</h3>
+      <p>
+        The 2-layer board was laid out in KiCAD. Power is routed and utilizes polygon pours as opposed to
+        dedicated power planes due to the low signal speed and low power of the design. Additionally, there
+        are very few components and no controlled impedances, so no more than 2 layers are needed.
+      </p>
+      <div class="callout">
+        <strong>Key Mistakes:</strong> Since this was one of my first boards, there were almost too many mistakes
+        to keep track of. Here is a non-exhaustive list of what I did wrong and what I would fix:
+        <br>
+        <br><strong>Problem:</strong> Many of the traces do not have a clear GND reference nearby.
+        <br><strong>Fix:</strong> Make sure each trace has GND on the layer below.
+        <br>
+        <br><strong>Problem:</strong> Voltage reference just uses voltage divider.
+        <br><strong>Fix:</strong> Use high impedance buffer to generate the reference voltage from divider to
+        prevent loading.
+        <br>
+        <br><strong>Problem:</strong> Placement is bad which causes awkward routing.
+        <br><strong>Fix:</strong> Rede placement so peripheral components are organized better and closer to the ICs
+        to minimize trace length.
+        <br>
+      </div>
+
+      <!-- UPDATE: Add a paragraph here about bring-up results, measurements, or lessons learned -->
+    </section>
+
+    <!-- ===================== SIMULATION RESULTS ===================== -->
+    <section>
+      <h2 class="section__title">Simulation Results</h2>
+      <p class="section__subtitle">LTSpice — Stylophone</p>
+
+      <div class="gallery">
+        <!-- LTSpice schematic -->
+        <div class="gallery__item gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/stylo_sim.jpg" alt="LTSpice simulation schematic of stylophone core"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: stylo_sim.jpg — add to assets/]'">
+          <div class="gallery__caption">LTSpice Schematic - Stylophone Core</div>
+        </div>
+        <!-- Waveform output -->
+        <div class="gallery__item gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/stylo_sim_graph.jpg" alt="LTSpice output waveform V(vout) showing distortion"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: stylo_sim_graph — add to assets/]'">
+          <div class="gallery__caption">V(vout) transient</div>
+        </div>
+        <!-- UPDATE: Add more simulation screenshots here using the same gallery__item pattern -->
+      </div>
+
+      <div class="callout" style="margin-top: 1.5rem;">
+        <strong>Result:</strong>
+        The sim output shows a square wave roughly centered around 0V. It's pretty jagged and point,
+        indicating a lot of high frequency content, but I'm not too concerned about how it will sound
+        because I'm not going for crystal clear pure sine wave audio results.
+        <!-- UPDATE: Add measured THD or SNR numbers here if you take bench measurements -->
+      </div>
+    </section>
+
+    <!-- ===================== SCHEMATIC ===================== -->
+    <section>
+      <h2 class="section__title">Schematic</h2>
+      <p class="section__subtitle">Full Circuit Diagram</p>
+
+      <div class="gallery">
+        <div class="gallery__item gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/stylo_sch.jpg" alt="Full KiCAD schematic — Stylophone.kicad_sch"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: stylo_sch.jpg — add to assets/]'">
+          <div class="gallery__caption">Stylophone.kicad_sch — NE555 based Stylophone</div>
+        </div>
+        <!-- UPDATE: Add detail crops of the schematic as separate gallery items if desired -->
+      </div>
+    </section>
+
+    <!-- ===================== PCB LAYOUT & 3D MODEL ===================== -->
+    <section>
+      <h2 class="section__title">PCB Layout & 3D Model</h2>
+      <p class="section__subtitle">KiCAD Design Files</p>
+
+      <div class="gallery gallery--3col">
+        <div class="gallery__item gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/stylo_pcb_layout.jpg" alt="KiCAD PCB layout — 2-layer board"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: stylo_pcb_layout.jpg — add to assets/]'">
+          <div class="gallery__caption">2-layer PCB layout — KiCAD · Red: top copper · Blue: bottom copper</div>
+        </div>
+        <div class="gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/stylo_pcb_3d.jpg" alt="KiCAD 3D render — top side"
+               onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: stylo_pcb_3d.jpg — add to assets/]'">
+          <div class="gallery__caption">3D render — top side · KiCAD viewer</div>
+        </div>
+        <!-- UPDATE: Add more layout/3D images here. Copy a gallery__item block and update src + caption -->
+      </div>
+    </section>
+
+    <!-- ===================== FUTURE WORK / NOTES ===================== -->
+    <section class="narrative-section">
+      <h2 class="section__title">Future Work & Notes</h2>
+      <p class="section__subtitle">What's Next</p>
+
+      <p>
+        The project is functionally finished, but there are still things I would like to measure and
+        evaluate or improve on such as:
+      </p>
+
+      <!-- Example list — update or remove as needed -->
+      <ul style="color: rgba(255,255,255,0.85); line-height: 2; font-size: 1rem; max-width: 700px; padding-left: 1.4rem;">
+        <li>Update the design to get rid of ringing</li>
+        <li>Design 3D enclosure</li>
+        <li>Add the ability to plug into an amplifier</li>
+        <li>Add ability to change octaves</li>
+      </ul>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <button class="lightbox__close" onclick="closeLightbox()">✕</button>
+      <img class="lightbox__img" id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <a href="mailto:manilumart@gmail.com" class="footer__link">manilumart@gmail.com</a>
+      <ul class="social-list">
+        <li class="social-list__item">
+          <a class="social-list__link" href="https://www.linkedin.com/in/luis-martinez-127696165"><i class="fab fa-linkedin"></i></a>
+        </li>
+        <li class="social-list__item">
+          <a class="social-list__link" href="https://github.com/LouisVizard"><i class="fab fa-github"></i></a>
+        </li>
+      </ul>
+    </footer>
+
+    <script>
+      // Mobile nav toggle
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.top-nav');
+      toggle.addEventListener('click', () => nav.classList.toggle('nav-open'));
+
+      // Lightbox
+      function openLightbox(src) {
+        if (!src) return;
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox').classList.add('active');
+      }
+      function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+      }
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    </script>
+  </body>
+</html>

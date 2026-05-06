@@ -348,6 +348,12 @@ section {
   color: var(--clr-accent);
 }
 
+.status-badge--todo {
+  background: rgba(255,0,0,0.15);
+  border: 1px solid rgba(255,0,0,0.4);
+  color: #FF0000;
+}
+
 .status-dot {
   width: 7px;
   height: 7px;
@@ -616,4 +622,10 @@ section {
 
 .social-list__link:hover {
   color: var(--clr-accent);
+}
+
+.links {
+  color: var(--clr-accent);
+  text-decoration: none;
+  font-weight: var(--fw-bold);
 }
