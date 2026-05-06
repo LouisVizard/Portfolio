@@ -185,23 +185,11 @@
       <h2 class="section__title">System Architecture</h2>
       <p class="section__subtitle">Data Flow</p>
 
-      <div class="signal-chain">
-        <div class="chain-block">GNSS<br><small>NEO-M9N</small></div>
-        <span class="chain-arrow">+</span>
-        <div class="chain-block">IMU<br><small>9DOF</small></div>
-        <span class="chain-arrow">→</span>
-        <div class="chain-block">STM32F4<br><small>Sensor Fusion</small></div>
-        <span class="chain-arrow">→</span>
-        <div class="chain-block">nRF24L01<br><small>RF Link</small></div>
-        <span class="chain-arrow">→</span>
-        <div class="chain-block">Host PC<br><small>Python Viz</small></div>
-      </div>
-
-      <div class="callout">
-        <strong>Goal:</strong> Fuse absolute positioning (GNSS) with high-rate inertial data
-        (IMU) using a Kalman filter to estimate real-time orientation and motion, then stream
-        state estimates wirelessly to a host computer for visualization.
-      </div>
+      <img
+          src="../../assets/emulator_diagram.jpg"
+          alt="Retro Emulator PCB Diagram"
+          class="project-hero__img"
+        >
     </section>
 
     <!-- ===================== DESIGN OVERVIEW ===================== -->
@@ -210,31 +198,44 @@
       <p class="section__subtitle">Hardware + Firmware</p>
 
       <p>
-        This board was designed as a dedicated navigation and state estimation platform.
-        The hardware is complete and functional, integrating all sensing, processing, and
-        communication subsystems onto a single PCB.
+        This board was designed to be the core of a retro game emulator handheld console. That means
+        it takes care of audio, power, display, controls, storage, and peripheral connectivity.
       </p>
 
       <h3>Hardware Integration</h3>
       <p>
-        The design centers around the STM32F4 MCU, which interfaces with the NEO-M9N GNSS
-        receiver over UART for global positioning, and a 9DOF IMU over SPI/I2C for
-        high-rate motion sensing. The nRF24L01 provides a low-latency 2.4 GHz RF link to
-        stream processed state estimates to an external computer.
+        The design centers around the Raspberry Pi Compute Module 5, which mounts to the bottom of
+        this custom PCB via the raceway connectors. This allows for all the benefits of the RPi to
+        be used without the space of a tradition RPi. The RPi CM5 will be running the emulation through the
+        RetroPie OS. Therefore, this PCB just needs to supply the hardware necessary for a user to interact
+        with the game.
+        <br><br>
+        An STM32F4 MCU is configured as a USB HID device and connected to the USB 2.0 FS interface on the
+        RPi. It is in charge of reading all of the joysticks and button presses, and doing so through a USB
+        HID interface alleviates the need for many GPIO pins on the RPi itself.
+        <br><br>
+        The audio circuitry is simple because hi-fidelity audio is not necessary when playing music from retro
+        games, so there is some wiggle room. However, I did implement stereo audio with left and right audio
+        PWM channels coming directly from the RPi. These lines are then filtered using a fifth order low-pass
+        Butterworth filter to get rid of the harsh high frequency content from the PWM. It then feeds into
+        four paralleled NE5532 op amps (per channel) which are meant to drive 1W speakers.
+        <br><br>
+        Finally, the HDMI display driver design was modeled after an Adafruit development board for one of
+        their 7-inch TFT displays that they sell, since the main driver IC should be plug and play with the
+        RPi and the display that I plan to use.
       </p>
 
       <h3>Power System</h3>
       <p>
         The board is powered by a single-cell LiPo battery with onboard USB-C charging
-        circuitry. Independent regulation stages supply stable rails for the RF front-end,
-        digital logic, and analog sensing paths, minimising noise coupling into sensitive
-        IMU measurements.
+        circuitry. It is designed so that it will automatically switch to USB-C power and
+        begin charging the battery if the cord is plugged in. 
       </p>
 
       <h3>PCB Stackup</h3>
       <p>
-        A 6-layer stackup was chosen to provide controlled impedance for RF and GNSS
-        antenna traces, solid ground referencing across all layers, and clean power
+        A 6-layer stackup was chosen to provide controlled impedance for USB, SD card,
+        and HDMI traces, solid ground referencing across all layers, and clean power
         distribution. Dedicated power and ground planes minimise EMI and improve signal
         integrity throughout.
       </p>
@@ -280,8 +281,7 @@
         </div>
 
         <p class="section__subtitle" style="margin-top: 1.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.5);">
-        RF, digital, and power sections are grouped accordingly. Separate power supply for RF components for
-        better isolation form noise.
+        Digital, audio, user input, display,and power sections are grouped accordingly.
         </p>
     </section>
 
