@@ -106,7 +106,7 @@
           </h1>
 
           <div class="project-hero__meta">
-            <span class="meta-tag">STM32F4</span>
+            <span class="meta-tag">STM32F411</span>
             <span class="meta-tag">GNSS</span>
             <span class="meta-tag">9DOF IMU</span>
             <span class="meta-tag">nRF24L01</span>
@@ -123,7 +123,7 @@
 
           <div class="hero-actions">
             <!-- UPDATE: Add a GitHub or project files link -->
-            <a href="#" class="btn">View on GitHub</a>
+            <a href="https://github.com/LouisVizard/NavBoard" class="btn">View on GitHub</a>
             <a href="#overview" class="btn-outline">Read More ↓</a>
           </div>
         </div>
@@ -145,7 +145,7 @@
       <div class="specs-grid">
         <div class="spec-card">
           <div class="spec-card__label">MCU</div>
-          <div class="spec-card__value">STM32F4CEU6</div>
+          <div class="spec-card__value">STM32F411CEU6</div>
         </div>
         <div class="spec-card">
           <div class="spec-card__label">GNSS</div>
@@ -181,7 +181,7 @@
         <span class="chain-arrow">+</span>
         <div class="chain-block">IMU<br><small>9DOF</small></div>
         <span class="chain-arrow">→</span>
-        <div class="chain-block">STM32F4<br><small>Sensor Fusion</small></div>
+        <div class="chain-block">STM32F411<br><small>Sensor Fusion</small></div>
         <span class="chain-arrow">→</span>
         <div class="chain-block">nRF24L01<br><small>RF Link</small></div>
         <span class="chain-arrow">→</span>
@@ -208,7 +208,7 @@
 
       <h3>Hardware Integration</h3>
       <p>
-        The design centers around the STM32F4 MCU, which interfaces with the NEO-M9N GNSS
+        The design centers around the STM32F411 MCU, which interfaces with the NEO-M9N GNSS
         receiver over UART for global positioning, and a 9DOF IMU over SPI/I2C for
         high-rate motion sensing. The nRF24L01 provides a low-latency 2.4 GHz RF link to
         stream processed state estimates to an external computer.
@@ -313,7 +313,7 @@
       </p>
 
       <ul>
-        <li>Implement EKF for GNSS + IMU fusion on STM32F4</li>
+        <li>Implement EKF for GNSS + IMU fusion on STM32F411</li>
         <li>Tune process and measurement noise covariance matrices</li>
         <li>Stream state estimates over nRF24L01 RF link</li>
         <li>Develop Python visualization for real-time attitude display</li>
