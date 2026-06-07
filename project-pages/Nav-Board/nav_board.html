@@ -237,10 +237,12 @@
     <section>
       <h2 class="section__title">Schematic</h2>
       <p class="section__subtitle">Full Circuit Diagram</p>
-      <div class="gallery__item" onclick="openLightbox(this.querySelector('img').src)">
-        <img src="../../assets/nav_sch.jpg" alt="Navigation Board PCB layout"
-              onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: nav_sch.jpg — add to assets/]'">
-        <div class="gallery__caption">Schematic</div>
+      <div class="gallery">
+        <div class="gallery__item" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="../../assets/nav_sch.jpg" alt="Navigation Board PCB layout"
+                onerror="this.style.display='none'; this.parentElement.querySelector('.gallery__caption').textContent='[Image: nav_sch.jpg — add to assets/]'">
+          <div class="gallery__caption">Schematic</div>
+        </div>
       </div>
 
       <p class="section__subtitle" style="margin-top: 1.5rem; font-size: 0.9rem; color: rgba(255,255,255,0.5);">
